@@ -1,0 +1,20 @@
+name: CI
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build Gatsby Page
+      run: |
+        npm install
+        npm run build
+    - name: Test
+      run: ls
