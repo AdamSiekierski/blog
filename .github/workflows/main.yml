@@ -12,9 +12,13 @@ jobs:
     
     steps:
     - uses: actions/checkout@v1
+    - name: Build Gatsby Page
+      run: |
+        npm install
+        npm run build
     - name: Deploy to gh-pages
       run: |
-        cd content
+        cd public
         git init
         git config --global user.email "adam.siekiera@outlook.com" && git config --global user.name "AdamSiekierski"
         git add .
