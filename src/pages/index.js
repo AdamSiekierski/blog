@@ -1,21 +1,46 @@
 import React from "react"
-import { Link } from "gatsby"
-
+import { graphql } from "gatsby"
+import { createGlobalStyle } from "styled-components"
 import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
+import MainPagePost from "../components/mainPagePost"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
+const GlobalStyles = createGlobalStyle`
+  *, *::before, *::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+`
+
+const IndexPage = ({ data }) => {
+  return (
+    <>
+      <GlobalStyles />
+      <Layout>
+        {data.allMarkdownRemark.edges.map(item => {
+          return <MainPagePost post={item.node} key={item.node.id} />
+        })}
+      </Layout>
+    </>
+  )
+}
+
+export const pageQuery = graphql`
+  query {
+    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+      edges {
+        node {
+          excerpt(pruneLength: 350)
+          id
+          frontmatter {
+            date
+            title
+            path
+          }
+        }
+      }
+    }
+  }
+`
 
 export default IndexPage
