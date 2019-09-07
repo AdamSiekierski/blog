@@ -22,5 +22,5 @@ jobs:
         git init
         git config --global user.email "adam.siekiera@outlook.com" && git config --global user.name "AdamSiekierski"
         git add .
-        git remote add origin https://AdamSiekierski:${{ secrets.GITHUB_PASSWORD }}@github.com/AdamSiekierski/adamsiekierski.github.io.git
+        git remote add origin https://AdamSiekierski:${{ secrets.GITHUB_PASSWORD }}@github.com/AdamSiekierski/blog.git
         git push origin gh-pages --force
