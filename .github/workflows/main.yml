@@ -21,4 +21,4 @@ jobs:
         git remote add origin https://AdamSiekierski:${{ secrets.GITHUB_PASSWORD }}@github.com/AdamSiekierski/blog.git
         git checkout -b gh-pages
         git commit -m"Push the new build"
-        git push -u origin gh-pages
+        git push -u origin gh-pages --force
