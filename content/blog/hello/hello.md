@@ -5,4 +5,6 @@ title: "hello everyone"
 ---
 
 Hello everyone! Welcome to my blog. I will post here some my thoughts about programming and new technologies!
-Greetings, Adam Siekierski
+Greetings, Adam Siekierski!
+
+![my computer](computer.jpg)
