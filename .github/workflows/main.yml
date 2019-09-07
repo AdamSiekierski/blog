@@ -14,8 +14,8 @@ jobs:
     - uses: actions/checkout@v1
     - name: Build Gatsby Page
       run: |
-        npm install
-        npm run build
+        ls
+        touch ./lolo.txt
         ls
     - name: Test
       run: ls
