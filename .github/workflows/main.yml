@@ -3,26 +3,25 @@ name: CI
 on:
   push:
     branches:
-    - master
+      - master
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-    
+
     steps:
-    - uses: actions/checkout@v1
-    - name: Build Gatsby Page
-      run: |
-        npm install
-        npm run build
-    - name: Deploy to gh-pages
-      run: |
-        cd public
-        git init
-        git config --global user.email "adam.siekiera@outlook.com" && git config --global user.name "AdamSiekierski"
-        git add .
-        git remote add origin https://AdamSiekierski:${{ secrets.GITHUB_PASSWORD }}@github.com/AdamSiekierski/blog.git
-        git checkout -b gh-pages
-        git commit -m"Push the new build"
-        git push -u origin gh-pages --force
+      - uses: actions/checkout@v1
+      - name: Build Gatsby Page
+        run: |
+          npm install
+          npm run build --prefix-paths
+      - name: Deploy to gh-pages
+        run: |
+          cd public
+          git init
+          git config --global user.email "adam.siekiera@outlook.com" && git config --global user.name "AdamSiekierski"
+          git add .
+          git remote add origin https://AdamSiekierski:${{ secrets.GITHUB_PASSWORD }}@github.com/AdamSiekierski/blog.git
+          git checkout -b gh-pages
+          git commit -m"Push the new build"
+          git push -u origin gh-pages --force
