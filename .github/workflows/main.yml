@@ -14,7 +14,7 @@ jobs:
       - name: Build Gatsby Page
         run: |
           npm install
-          npm run build --prefix-paths
+          npm run build
       - name: Deploy to gh-pages
         run: |
           cd public
