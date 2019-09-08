@@ -7,6 +7,10 @@ const PostPrevievContainer = styled.div`
   margin: 25px auto 0 auto;
   padding: 25px;
   border: 5px solid #ffffff;
+
+  @media screen and (max-width: 600px) {
+    font-size: 0.8em;
+  }
 `
 
 const PostTitle = styled.h3`
@@ -20,6 +24,10 @@ const PostTitle = styled.h3`
     :hover {
       text-decoration: underline;
     }
+  }
+
+  @media screen and (max-width: 600px) {
+    font-size: 30px;
   }
 `
 

@@ -27,7 +27,8 @@ const Header = styled.div`
   align-items: center;
 
   @media screen and (max-width: 600px) {
-    padding: 0 20px 0 10px;
+    font-size: 24px;
+    padding: 0 10px 0 5px;
   }
 `
 

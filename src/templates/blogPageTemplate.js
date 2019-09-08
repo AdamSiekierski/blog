@@ -10,12 +10,29 @@ const PostWrapper = styled.div`
   padding: 20px;
   color: white;
   border: 5px solid white;
+
+  @media screen and (max-width: 600px) {
+    font-size: 0.8em;
+    padding: 10px;
+  }
+
+  a {
+    color: white;
+  }
+
+  blockquote {
+    font-style: italic;
+  }
 `
 
 const PostTitle = styled.h3`
   font-size: 36px;
   margin: 0;
   font-weight: 700;
+
+  @media screen and (max-width: 600px) {
+    font-size: 30px;
+  }
 `
 
 const PostDate = styled.h4`

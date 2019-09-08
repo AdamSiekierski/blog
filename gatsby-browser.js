@@ -1,2 +1,5 @@
-require("prismjs/themes/prism.css")
+require("prismjs/themes/prism-tomorrow.css")
 require("prismjs/plugins/line-numbers/prism-line-numbers.css")
+require("prismjs/plugins/line-numbers/prism-line-numbers.js")
+require("prismjs/plugins/line-highlight/prism-line-highlight.css")
+require("prismjs/plugins/line-highlight/prism-line-highlight.js")
