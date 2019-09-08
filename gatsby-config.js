@@ -1,5 +1,5 @@
 module.exports = {
-  pathPrefix: `/blog/`,
+  pathPrefix: `/blog`,
   plugins: [
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-react-helmet`,
