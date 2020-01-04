@@ -1,8 +1,8 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { createGlobalStyle } from "styled-components"
-import Layout from "../components/layout"
-import MainPagePost from "../components/mainPagePost"
+import Layout from "../components/Layout/Layout"
+import MainPagePost from "../components/MainPagePost/MainPagePost"
 
 const GlobalStyles = createGlobalStyle`
   *, *::before, *::after {

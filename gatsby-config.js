@@ -40,5 +40,17 @@ module.exports = {
         name: `blog`,
       },
     },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Adam Siekierski Blog`,
+        short_name: 'adamsiekierski',
+        start_url: '/',
+        backgroundColor: 'black',
+        themeColor: 'white',
+        display: 'standalone',
+        icon: 'src/assets/favicon/favicon.png',
+      },
+    },
   ],
 }

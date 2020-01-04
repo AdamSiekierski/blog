@@ -67,4 +67,4 @@ Yes... It looks almost exactly the same as CircleCI. But it's quite diffrent. St
 
 #### The summary
 
-The GitHub Actions platform has a big potential, but at the moment, it's a lot easier to use CircleCI, or (what I'm fan of) Buddy. If the community gets stronger, you will get more third-party actions (for example for sending emails with notifications). And I would want some better interaction than just the YAML - for the begginers it should be easier. The GitHub Actions needs to wait for a while.
+The GitHub Actions platform has a big potential, but at the moment, it's a lot easier to use CircleCI, or (what I'm fan of) Buddy. If the community gets stronger, you will get more third-party actions (for example for sending emails with notifications). And I would want some better interaction than just the YAML - for the begginers it should be easier. The GitHub Actions need to wait for a while for now.
