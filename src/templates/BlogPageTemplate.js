@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
-import axios from "axios";
-import md5 from "md5";
+import axios from "axios"
+import md5 from "md5"
 import styled from "styled-components"
 import Layout from "../components/Layout/Layout"
 import Comment from "../components/Comment/Comment"
@@ -67,52 +67,70 @@ const CommentsWrapper = styled.div`
 
 class BlogPage extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
-      comments: []
+      comments: [],
     }
 
-    this.getComments = this.getComments.bind(this);
-    this.sendComment = this.sendComment.bind(this);
+    this.getComments = this.getComments.bind(this)
+    this.sendComment = this.sendComment.bind(this)
   }
 
   componentDidMount() {
-    this.getComments();
+    this.getComments()
   }
 
   getComments() {
-    axios.get(`https://adamsiekierski-blog.herokuapp.com/comments/${md5(this.props.data.markdownRemark.frontmatter.path)}`).then(res => {
-      this.setState({ comments: res.data });
-    })
+    axios
+      .get(
+        `https://adamsiekierski-blog.herokuapp.com/comments/${md5(
+          this.props.data.contentfulPost.url
+        )}`
+      )
+      .then(res => {
+        this.setState({ comments: res.data })
+      })
   }
 
   sendComment({ name, content }) {
-    axios.post(`https://adamsiekierski-blog.herokuapp.com/comments/add`, {
-      post_id: md5(this.props.data.markdownRemark.frontmatter.path),
-      content: content,
-      author: name,
-    }).then(() => {
-      this.getComments();
-    })
+    axios
+      .post(`https://adamsiekierski-blog.herokuapp.com/comments/add`, {
+        post_id: md5(this.props.data.contentfulPost.url),
+        content: content,
+        author: name,
+      })
+      .then(() => {
+        this.getComments()
+      })
   }
 
   render() {
-    const { markdownRemark } = this.props.data
+    const { contentfulPost } = this.props.data
 
     return (
-      <Layout>
+      <Layout title={contentfulPost.title}>
         <PostWrapper>
-          <PostTitle>{markdownRemark.frontmatter.title}</PostTitle>
-          <PostDate>{markdownRemark.frontmatter.date}</PostDate>
-          <div dangerouslySetInnerHTML={{ __html: markdownRemark.html }} />
+          <PostTitle>{contentfulPost.title}</PostTitle>
+          <PostDate>{contentfulPost.date}</PostDate>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: contentfulPost.content.childMarkdownRemark.html,
+            }}
+          />
         </PostWrapper>
         <CommentsWrapper>
           <h1>Comments</h1>
           <CommentForm sendComment={this.sendComment} />
-          { this.state.comments.map(comment => (
-            <Comment comment={comment} key={comment._id} refreshComments={this.getComments}/>
-          )).reverse() }
+          {this.state.comments
+            .map(comment => (
+              <Comment
+                comment={comment}
+                key={comment._id}
+                refreshComments={this.getComments}
+              />
+            ))
+            .reverse()}
         </CommentsWrapper>
       </Layout>
     )
@@ -121,13 +139,15 @@ class BlogPage extends React.Component {
 
 export const PageQuery = graphql`
   query($path: String!) {
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
-      html
-      frontmatter {
-        title
-        date
-        path
+    contentfulPost(url: { eq: $path }) {
+      content {
+        childMarkdownRemark {
+          html
+        }
       }
+      title
+      date
+      url
     }
   }
 `

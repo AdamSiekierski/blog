@@ -43,11 +43,11 @@ const SeeMoreLink = styled(Link)`
 const MainPagePost = ({ post }) => (
   <PostPrevievContainer>
     <PostTitle>
-      <Link to={post.frontmatter.path}> {post.frontmatter.title} </Link>
+      <Link to={post.url}> {post.title} </Link>
     </PostTitle>
-    <PostDate> {post.frontmatter.date} </PostDate>
-    {post.excerpt}{" "}
-    <SeeMoreLink to={post.frontmatter.path}>see more</SeeMoreLink>
+    <PostDate> {post.date} </PostDate>
+    {post.content.childMarkdownRemark.excerpt}{" "}
+    <SeeMoreLink to={post.url}>see more</SeeMoreLink>
   </PostPrevievContainer>
 )
 

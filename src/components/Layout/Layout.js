@@ -37,7 +37,7 @@ const StyledLink = styled(Link)`
   color: white;
 `
 
-const Layout = ({ children }) => (
+const Layout = ({ children, title }) => (
   <StyledWrapper>
     <Helmet
       meta={[
@@ -59,11 +59,15 @@ const Layout = ({ children }) => (
         { rel: "icon", type: "image/png", sizes: "32x32", href: favicon32 },
         { rel: "icon", type: "image/png", sizes: "96x96", href: favicon96 },
       ]}
+      title={title}
+      titleTemplate="%s | siekierski blog"
     />
     <Header>
-      <Typing speed={100} cursorClassName={"customCursor"}>
-        <StyledLink to="/">adam siekierski's blog</StyledLink>
-      </Typing>
+      <StyledLink to="/">
+        <Typing speed={100} cursorClassName={"customCursor"}>
+          adam siekierski's blog
+        </Typing>
+      </StyledLink>
     </Header>
     <div>{children}</div>
   </StyledWrapper>

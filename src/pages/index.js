@@ -16,9 +16,9 @@ const IndexPage = ({ data }) => {
   return (
     <>
       <GlobalStyles />
-      <Layout>
-        {data.allMarkdownRemark.edges.map(item => {
-          return <MainPagePost post={item.node} key={item.node.id} />
+      <Layout title="home">
+        {data.allContentfulPost.nodes.map(item => {
+          return <MainPagePost post={item} key={item.id} />
         })}
       </Layout>
     </>
@@ -27,17 +27,17 @@ const IndexPage = ({ data }) => {
 
 export const pageQuery = graphql`
   query {
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-      edges {
-        node {
-          excerpt(pruneLength: 350)
-          id
-          frontmatter {
-            date
-            title
-            path
+    allContentfulPost(sort: { fields: date, order: DESC }) {
+      nodes {
+        content {
+          childMarkdownRemark {
+            excerpt(pruneLength: 350)
           }
         }
+        id
+        date
+        title
+        url
       }
     }
   }

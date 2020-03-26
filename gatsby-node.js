@@ -4,16 +4,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const blogPageTemplate = path.resolve("src/templates/BlogPageTemplate.js")
   const result = await graphql(`
     {
-      allMarkdownRemark(
-        sort: { order: DESC, fields: [frontmatter___date] }
-        limit: 1000
-      ) {
-        edges {
-          node {
-            frontmatter {
-              path
-            }
-          }
+      allContentfulPost {
+        nodes {
+          url
         }
       }
     }
@@ -22,9 +15,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     reporter.panicOnBuild(`Error while running GraphQL query.`)
     return
   }
-  result.data.allMarkdownRemark.edges.map(({ node }) => {
+  result.data.allContentfulPost.nodes.map(node => {
     actions.createPage({
-      path: node.frontmatter.path,
+      path: node.url,
       component: blogPageTemplate,
       context: {},
     })
