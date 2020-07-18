@@ -45,13 +45,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Adam Siekierski Blog`,
-        short_name: "adamsiekierski",
+        name: `Siekierski Blog`,
+        short_name: "siekierski",
         start_url: "/",
         backgroundColor: "black",
         themeColor: "white",
         display: "standalone",
-        icon: "src/assets/favicon/favicon.png",
+        icon: "src/assets/favicon/favicon-96x96.png",
       },
     },
   ],
