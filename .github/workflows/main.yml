@@ -23,9 +23,9 @@ jobs:
         run: |
           cd public
           git init
-          git config --global user.email "adam.siekiera@outlook.com" && git config --global user.name "AdamSiekierski"
+          git config --global user.email "a@siekierski.ml" && git config --global user.name "AdamSiekierski"
           git add .
-          git remote add origin https://AdamSiekierski:${{ secrets.GITHUB_PASSWORD }}@github.com/AdamSiekierski/blog.git
+          git remote add origin https://AdamSiekierski:${{ secrets.GH_TOKEN }}@github.com/AdamSiekierski/blog.git
           git checkout -b gh-pages
           git commit -m"Push the new build"
           git push -u origin gh-pages --force
